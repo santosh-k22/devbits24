@@ -1,18 +1,18 @@
-import { useState } from "react";
+// import { useState } from "react";
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 // import './App.css'
 import LandingPage from "./LandingPage";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   return (
     <>
-      Hola, I am Santosh
+      {/* Hola, I am Santosh
       <button onClick={() => setCount((count) => count + 1)}>
         count is {count}{" "}
-      </button>
+      </button> */}
 
       <LandingPage></LandingPage>
     </>
