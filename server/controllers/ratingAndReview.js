@@ -71,20 +71,6 @@ exports.getAverageRating = async (req, res) => {
     try {
         const courseId = req.body.courseId;
 
-        // const result = await RatingAndReview.aggregate([
-        //     {
-        //         $match: {
-        //             course: new mongoose.Types.ObjectId(courseId),
-        //         },
-        //     },
-        //     {
-        //         $group: {
-        //             _id: null,
-        //             averageRating: { $avg: "$rating" },
-        //         },
-        //     },
-        // ]);
-
         // TODO : Understand clearly how this works
         // Calculate avg rating
         const result = await RatingAndReview.aggregate([

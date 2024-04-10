@@ -6,12 +6,12 @@ const UserSchema = new Schema(
     {
         firstName: {
             type: String,
-            // required: true,
+            required: true,
             trim: true,
         },
         lastName: {
             type: String,
-            // required: true,
+            required: true,
             trim: true,
         },
 
@@ -31,20 +31,6 @@ const UserSchema = new Schema(
             enum: ["Admin", "Student", "Instructor"],
             // required: true,
         },
-        // active: {
-        // 	type: Boolean,
-        // 	default: true,
-        // },
-        // approved: {
-        // 	type: Boolean,
-        // 	default: true,
-        // },
-        // additionalDetails: {
-        // 	type: mongoose.Schema.Types.ObjectId,
-        // 	required: true,
-        // 	ref: "Profile",
-        // },
-
         // User's courses
         courses: [
             {
@@ -59,12 +45,6 @@ const UserSchema = new Schema(
                 ref: "courseProgress",
             },
         ],
-        // token: {
-        // 	type: String,
-        // },
-        // resetPasswordExpires: {
-        // 	type: Date,
-        // },
         image: {
             type: String,
             // required: true,

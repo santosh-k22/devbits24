@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const RatingAndReviewSchema = new Schema({
 	user: {
 		type: Schema.Types.ObjectId,
-		// required: true,
+		required: true,
 		ref: "user",
 	},
     course: {

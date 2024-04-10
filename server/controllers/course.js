@@ -53,11 +53,6 @@ exports.createCourse = async (req, res) => {
         // Get thumbnail image from request files
         const thumbnail = req.files.thumbnailImage;
 
-        // // Convert the tag and instructions from stringified Array to Array
-        // const tag = JSON.parse(_tag)
-        // const instructions = JSON.parse(_instructions)
-        // console.log("tag", tag);
-        // console.log("instructions", instructions);
 
         // Check if any of the required fields are missing
         if (
@@ -105,13 +100,6 @@ exports.createCourse = async (req, res) => {
             })
         }
 
-        // // Upload the Thumbnail to Cloudinary
-        // const thumbnailImage = await uploadImageToCloudinary(
-        //     thumbnail,
-        //     process.env.FOLDER_NAME
-        // )
-        // console.log(thumbnailImage);
-
         // Upload the Thumbnail to Cloudinary
         const thumbnailImage = await cloudinary.uploader
             .upload(thumbnail, {
@@ -137,19 +125,18 @@ exports.createCourse = async (req, res) => {
             instructions,
         });
 
-        // TODO: Uncomment
         // Add the new course to the User Schema of the Instructor
-        // await User.findByIdAndUpdate(
-        //     {
-        //         _id: instructorDetails._id,
-        //     },
-        //     {
-        //         $push: {
-        //             courses: newCourse._id,
-        //         },
-        //     },
-        //     { new: true }
-        // );
+        await User.findByIdAndUpdate(
+            {
+                _id: instructorDetails._id,
+            },
+            {
+                $push: {
+                    courses: newCourse._id,
+                },
+            },
+            { new: true }
+        );
 
         // Add the new course to the Categories
         const courseCategory = await Category.findByIdAndUpdate(
@@ -181,20 +168,19 @@ exports.createCourse = async (req, res) => {
 }
 
 // UPDATE
-// exports.editCourse = async (req, res) => {
 exports.updateCourse = async (req, res) => {
     try {
         const { courseId } = req.body;
         const updates = req.body;
         const userId = req.user.id;
-        
+
         const course = await Course.findById(courseId)
         // Return if course not found
         if (!course) {
             return res.status(404).json({ error: "Course not found" })
         }
         // Return error if course instructor and user are not same
-        if(course.instructor !== userId){
+        if (course.instructor !== userId) {
             return res.status(403).json({ error: "You are not authorized to edit this course" })
         }
 
@@ -273,17 +259,7 @@ exports.updateCourse = async (req, res) => {
 // READ ALL Course List
 exports.getAllCourses = async (req, res) => {
     try {
-        const allCourses = await Course.find(
-            // { status: "Published" },
-            // {
-            //     courseName: true,
-            //     // price: true,
-            //     thumbnail: true,
-            //     instructor: true,
-            //     ratingAndReviews: true,
-            //     studentsEnrolled: true,
-            // }
-        )
+        const allCourses = await Course.find()
             .populate("instructor")
             .exec()
 
@@ -333,13 +309,6 @@ exports.getCourseDetails = async (req, res) => {
             })
         };
         console.log(courseDetails);
-
-        // if (courseDetails.status === "Draft") {
-        //   return res.status(403).json({
-        //     success: false,
-        //     message: `Accessing a draft course is forbidden`,
-        //   });
-        // }
 
         let totalDurationInSeconds = 0
         courseDetails.courseContent.forEach((content) => {
@@ -406,13 +375,6 @@ exports.getUserCourseDetails = async (req, res) => {
                 message: `Could not find course with id: ${courseId}`,
             })
         }
-
-        // if (courseDetails.status === "Draft") {
-        //   return res.status(403).json({
-        //     success: false,
-        //     message: `Accessing a draft course is forbidden`,
-        //   });
-        // }
 
         let totalDurationInSeconds = 0
         courseDetails.courseContent.forEach((content) => {
