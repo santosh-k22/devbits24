@@ -52,17 +52,15 @@ export default function Hero() {
                   theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
               }}
             >
-              products
+            Courses
             </Typography>
           </Typography>
           <Typography
             textAlign="center"
             color="text.secondary"
-            sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' } }}
+            sx={{ alignSelf: 'center', fontSize:'clamp(1.25rem,10vw,0.5rem)', width: { sm: '100%', md: '80%' } }}
           >
-            Explore our cutting-edge dashboard, delivering high-quality solutions
-            tailored to your needs. Elevate your experience with top-tier features
-            and services.
+          Unlock your potential. One course at a time.
           </Typography>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
@@ -77,24 +75,17 @@ export default function Hero() {
               size="small"
               variant="outlined"
               aria-label="Enter your email address"
-              placeholder="Your email address"
+              placeholder="Enter your interests"
               inputProps={{
                 autocomplete: 'off',
                 ariaLabel: 'Enter your email address',
               }}
             />
             <Button variant="contained" color="primary">
-              Start now
+              Search
             </Button>
           </Stack>
-          <Typography variant="caption" textAlign="center" sx={{ opacity: 0.8 }}>
-            By clicking &quot;Start now&quot; you agree to our&nbsp;
-            <Link href="#" color="primary">
-              Terms & Conditions
-            </Link>
-            .
-          </Typography>
-        </Stack>
+          </Stack>
         <Box
           id="image"
           sx={(theme) => ({
