@@ -6,36 +6,36 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import AutoFixHighRoundedIcon from '@mui/icons-material/AutoFixHighRounded';
-import ConstructionRoundedIcon from '@mui/icons-material/ConstructionRounded';
+import ConstructionRoundedIcon from '@mui/icons-material/School';
 import QueryStatsRoundedIcon from '@mui/icons-material/QueryStatsRounded';
-import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
+import SettingsSuggestRoundedIcon from '@mui/icons-material/TipsAndUpdates';
 import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
 import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
 
 const items = [
   {
     icon: <SettingsSuggestRoundedIcon />,
-    title: 'Adaptable performance',
+    title: 'Master New Skills',
     description:
-      'Our product effortlessly adjusts to your needs, boosting efficiency and simplifying your tasks.',
+      'Unleash your potential with a vast library of courses designed to empower you in every field.',
   },
   {
     icon: <ConstructionRoundedIcon />,
-    title: 'Built to last',
+    title: 'Learn From Experts',
     description:
-      'Experience unmatched durability that goes above and beyond with lasting investment.',
+      'Gain knowledge from industry leaders and renowned instructors who share their expertise.',
   },
   {
     icon: <ThumbUpAltRoundedIcon />,
-    title: 'Great user experience',
+    title: 'On-The-Go Learning',
     description:
-      'Integrate our product into your routine with an intuitive and easy-to-use interface.',
+      'Access your courses and learning materials anytime, anywhere, on any device.',
   },
   {
     icon: <AutoFixHighRoundedIcon />,
-    title: 'Innovative functionality',
+    title: ' Engaging Content',
     description:
-      'Stay ahead with features that set new standards, addressing your evolving needs better than the rest.',
+      'Dive into interactive modules, captivating videos, and enriching resources for a dynamic learning experience.',
   },
   {
     icon: <SupportAgentRoundedIcon />,
@@ -45,9 +45,9 @@ const items = [
   },
   {
     icon: <QueryStatsRoundedIcon />,
-    title: 'Precision in every detail',
+    title: 'Track your progress',
     description:
-      'Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.',
+      'Monitor your learning journey, identify strengths, and visualize your achievements with detailed analytics.',
   },
 ];
 
@@ -80,11 +80,7 @@ export default function Highlights() {
           <Typography component="h2" variant="h4">
             Highlights
           </Typography>
-          <Typography variant="body1" sx={{ color: 'grey.400' }}>
-            Explore why our product stands out: adaptability, durability,
-            user-friendly design, and innovation. Enjoy reliable customer support and
-            precision in every detail.
-          </Typography>
+          
         </Box>
         <Grid container spacing={2.5}>
           {items.map((item, index) => (

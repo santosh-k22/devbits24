@@ -53,7 +53,7 @@ export default function Hero() {
               }}
             >
             Courses
-            </Typography>
+            </Typography> 
           </Typography>
           <Typography
             textAlign="center"

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
+import Blog from "./components/Blog";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/signUp" element={<SignUp />} />
           <Route exact path="/signIn" element={<SignIn />} />
+          <Route exact path="/blog" element={<Blog />} />
         </Routes>
 
       </>
