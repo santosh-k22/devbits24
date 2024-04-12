@@ -4,11 +4,15 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
+// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+// import PeopleIcon from '@mui/icons-material/People';
+// import BarChartIcon from '@mui/icons-material/BarChart';
+// import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import PersonIcon from '@mui/icons-material/Person';
+import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
+import AddToQueueIcon from '@mui/icons-material/AddToQueue';
+import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 
 export const mainListItems = (
   <React.Fragment>
@@ -20,25 +24,25 @@ export const mainListItems = (
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <PersonIcon />
       </ListItemIcon>
       <ListItemText primary="My Profile" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <PeopleIcon />
+        <OndemandVideoIcon />
       </ListItemIcon>
       <ListItemText primary="My Courses" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <BarChartIcon />
+        <AddToQueueIcon />
       </ListItemIcon>
       <ListItemText primary="Add Course" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <LayersIcon />
+        <VideoLibraryIcon />
       </ListItemIcon>
       <ListItemText primary="Registered courses" />
     </ListItemButton>

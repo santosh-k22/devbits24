@@ -13,20 +13,21 @@ import Badge from "@mui/material/Badge";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { mainListItems, secondaryListItems } from "./listItems";
+// import { mainListItems, secondaryListItems } from "./listItems";
+import { mainListItems } from "./listItems";
 import Chart from "./Chart";
-import Revenue from "./Revenue";
+// import Revenue from "./Revenue";
 // import Orders from "./Orders";
 
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import EditIcon from '@mui/icons-material/Edit';
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+// import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useForm } from "react-hook-form";
 import FormLabel from "@mui/material/FormLabel";
 
@@ -149,8 +150,8 @@ export default function Dashboard() {
           <Divider />
           <List component="nav">
             {mainListItems}
-            <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
+            {/* <Divider sx={{ my: 1 }} />
+            {secondaryListItems} */}
           </List>
         </Drawer>
         <Box
@@ -191,7 +192,7 @@ export default function Dashboard() {
                     height: 240,
                   }}
                 >
-                  <Deposits />
+                  {/* <Deposits /> */}
                 </Paper>
               </Grid>
               {/* Personal information */}

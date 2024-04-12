@@ -16,7 +16,7 @@ const { isLoggedIn, isInstructor } = require("../middleware");
 // router.get("/enrolledCourses", isLoggedIn, enrolledCourses)
 // router.get("/instructorDashboard", isLoggedIn, isInstructor, instructorDashboard)
 router.put("/update", updateUser);
-router.delete("/delete", isLodIn, deleteUser);
+router.delete("/delete", deleteUser);
 router.get("/details", userDetails);
 router.get("/enrolledCourses", enrolledCourses)
 router.get("/instructorDashboard", instructorDashboard)

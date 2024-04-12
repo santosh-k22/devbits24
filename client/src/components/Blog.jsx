@@ -1,4 +1,4 @@
-import * as React from 'react';
+// import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './Header';
 import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from './FeaturedPost';
-import Main from './blogmain';
+import Main from './Blogmain';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 // import post1 from './blog-post.1.md';
@@ -58,7 +58,7 @@ const featuredPosts = [
 ];
 
 // const posts = [post1, post2, post3];
-const posts = ["Hola, I am Sntosh", "I am mad now", "I do not know what i am doing"];
+const posts = ["Hola, I am Santosh", "I am mad now", "I do not know what i am doing"];
 
 
 const sidebar = {
