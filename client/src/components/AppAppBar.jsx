@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { Outlet, Link } from "react-router-dom";
 
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
@@ -149,17 +150,18 @@ function AppAppBar({ mode, toggleColorMode }) {
                 href="/material-ui/getting-started/templates/sign-in/"
                 target="_blank"
               >
-                Sign in
+                <Link to="/signIn">Sign in</Link> 
               </Button>
               <Button
                 color="primary"
-                variant="contained"
+                // variant="contained"
+                variant="text"
                 size="small"
                 component="a"
                 href="/material-ui/getting-started/templates/sign-up/"
                 target="_blank"
               >
-                Sign up
+                <Link to="/signUp">Sign up</Link> 
               </Button>
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
@@ -235,6 +237,7 @@ function AppAppBar({ mode, toggleColorMode }) {
           </Toolbar>
         </Container>
       </AppBar>
+      <Outlet />
     </div>
   );
 }

@@ -27,7 +27,7 @@ const courseSubContentRoutes = require("./routes/courseSubContent");
 const ratingAndReviewRoutes = require("./routes/ratingAndReview");
 
 const dev_db_url =
-    "mongodb+srv://kothapallisantoshece22:6zPFY03uyofZn3oV@cluster0.iyzydsp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+    "mongodb+srv://kothapallisantoshece22:<password>@cluster0.iyzydsp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 // Wait for database to connect, logging an error if there is a problem
 main().catch((err) => console.log(err));
@@ -54,7 +54,7 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-app.use(helmet({ contentSecurityPolicy: false }));
+// app.use(helmet({ contentSecurityPolicy: false }));
 
 // app.use(csrf());
 // app.use(function (req, res, next) {

@@ -16,42 +16,39 @@ express-async-handler
 
 // Routes
 
-
-SERVER
-
-API COURSES
+COURSES
 
   Route                                      HTTP Verb  Description
   ----------------------------------------- ----------- -----------------------------------
-  `/api/courses/`                              `GET`    Show all Courses
-  `/api/courses/:id`                            `GET`   Show one Course
-  `/api/courses/category`                       `GET`    Show all Courses
+  `/courses/:id`                            `GET`   Show one Course
+  `/courses/`                              `GET`    Show all Courses
+  `/courses/category`                       `GET`    Show all Courses
 
-  `/api/courses/:id/edit`                        `GET`   Edit form if course belongs to user
-  `/api/courses/:id/edit`                        `POST`  Edit if course belongs to user
-  `/api/courses/:id/delete`                   `DELETE`  Delete Course if course belongs to user     // Refrain
+  `/courses/:id/edit`                        `GET`   Edit form if course belongs to user
+  `/courses/:id/edit`                        `POST`  Edit if course belongs to user
+  `/courses/:id/delete`                   `DELETE`  Delete Course if course belongs to user     // Refrain
 
-  `/api/courses/newCourse`                    `POST`    Create new Course
-  `/api/courses/editCourse/:id`                `PUT`    Edit Course
+  `/courses/newCourse`                    `POST`    Create new Course
+  `/courses/editCourse/:id`                `PUT`    Edit Course
   
-  `/api/courses/deleteTeacherCourses/:id`    `DELETE`   Delete Courses created by Teacher
+  `/courses/deleteTeacherCourses/:id`    `DELETE`   Delete Courses created by Teacher
 
-API User
+User
 
   Route                                HTTP Verb  Description
   ----------------------------------- ----------- -----------------------
-  `/api/user/:id`                       `GET`    Show user Details
-  `/api/user/:id/enrolledCourses`       `GET`   Show particular user's enrolled Courses
-  `/api/educators/:id/courses`          `GET`   Show particular user's made Courses
-  `/api/user/:id/update`                `GET`    Form to update user credentials
-  `/api/user/:id/update`                `POST`   Update user credentials
-  `/api/user/:id/delete`                `GET`    Form to update user credentials  //  Refrain if user has courses
-  `/api/user/:id/delete`                `POST`   Delete user                      // Refrain if user has courses
-  `/api/user/:id/instructorDashboard`   `GET`    User dashboard if has myCourses
-  `/api/user/:id/learnerDashboard`      `GET`    User dashboard if has enrolledCourses
+  `/user/:id`                       `GET`    Show user Details
+  `/user/:id/enrolledCourses`       `GET`   Show particular user's enrolled Courses
+  `/educators/:id/courses`          `GET`   Show particular user's made Courses
+  `/user/:id/update`                `GET`    Form to update user credentials
+  `/user/:id/update`                `POST`   Update user credentials
+  `/user/:id/delete`                `GET`    Form to update user credentials  //  Refrain if user has courses
+  `/user/:id/delete`                `POST`   Delete user                      // Refrain if user has courses
+  `/user/:id/instructorDashboard`   `GET`    User dashboard if has myCourses
+  `/user/:id/learnerDashboard`      `GET`    User dashboard if has enrolledCourses
 
 
-API AUTH
+AUTH
 
   Route              HTTP Verb  Description
   ----------------- ----------- ------------------------
@@ -64,31 +61,14 @@ API AUTH
   `/reset`        `GET`     Display reset password form
 
 
-API Student
-
-  Route                                HTTP Verb  Description
-  ----------------------------------- ----------- -----------------------
-  `/api/educators/`                      `GET`    Show all Teachers
-  `/api/educators/:id`                   `GET`    Show Teacher Details
-  `/api/educators/:id/courses`           `GET`    Show particular Teacher's Courses
-  `/api/educators/:id/update`            `GET`    Form to update Teacher credentials
-  `/api/educators/:id/update`            `POST`   Update Teacher credentials
-  `/api/educators/:id/delete`            `GET`    Form to update Teacher credentials  // Refrain
-  `/api/educators/:id/delete`            `POST`   Delete Teacher                      // Refrain
-  `/api/educators/create`                `GET`     Form to create new Teacher
-  `/api/educators/create`                `POST`    Create new Teacher
-  `/api/teachers/editTeacher/:id`        `PUT`    Edit Teacher
-  `/api/teachers/deleteTeacher/:id`    `DELETE`   Delete Teacher
-
-API COMMENTS
+COMMENTS
 
   Route                                    HTTP Verb  Description
   --------------------------------------- ----------- ---------------------
-  `/api/comments/getCourseComments/:id`      `GET`    Get Course Comments
-  `/api/comments/newComment`                `POST`    Create Comment
-  `/api/comments/deleteComment/:id`        `DELETE`   Delete Comment
+  `/comments/getCourseComments/:id`      `GET`    Get Course Comments
+  `/comments/newComment`                `POST`    Create Comment
+  `/comments/deleteComment/:id`        `DELETE`   Delete Comment
 
-CLIENT
 
   Route                                       Description
   ------------------------------------------- ----------------------------------
@@ -109,10 +89,6 @@ CLIENT
 Course
 Category
 Rating and review
-
-// Routes
-
-
 
 home
 login

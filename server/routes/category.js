@@ -10,7 +10,10 @@ const {
 const { isLoggedIn, isInstructor, isAdmin } = require("../middleware");
 
 // /category
-router.post("/create", isLoggedIn, isAdmin, createCategory);
+// router.post("/create", isLoggedIn, isAdmin, createCategory);
+// router.get("/", categoryPageDetails);
+// router.get("/showAll", showAllCategories);
+router.post("/create", createCategory);
 router.get("/", categoryPageDetails);
 router.get("/showAll", showAllCategories);
 

@@ -18,6 +18,9 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 // import getLPTheme from './getLPTheme';
+import axios from "axios";
+import { useEffect } from "react";
+
 
 // function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
 //   return (
@@ -75,6 +78,21 @@ export default function LandingPage() {
   //   setShowCustomTheme((prev) => !prev);
   // };
 
+  const trialFunc = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:3000/course/",
+      );
+      console.log(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
+    console.log("team_details")
+    trialFunc();
+  }, []);
+
   return (
     // <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
     <>
@@ -99,6 +117,8 @@ export default function LandingPage() {
         showCustomTheme={showCustomTheme}
         toggleCustomTheme={toggleCustomTheme}
       /> */}
+
+      
     </>
     // </ThemeProvider>
   );

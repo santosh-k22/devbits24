@@ -1,0 +1,8 @@
+Issue in user sign up (duplicate username error)
+    Thus commented authorisation in all the places where it is needed.
+
+Backend is complete (which were planned for now) except for user signup
+Frontend is still in progress with many pages still not linked and yet to be made
+
+Cloudinary credential is not set up for now.
+MongoDB is not set up for now, using my credentials
