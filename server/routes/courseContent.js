@@ -10,8 +10,11 @@ const {
 const { isLoggedIn, isInstructor } = require("../middleware");
 
 // /course/:courseId/   :courseContentId/
-router.post("/create", isLoggedIn, isInstructor, createCourseContent);
-router.post("/update", isLoggedIn, isInstructor, updateCourseContent);
-router.post("/delete", isLoggedIn, isInstructor, deleteCourseContent);
+// router.post("/create", isLoggedIn, isInstructor, createCourseContent);
+// router.post("/update", isLoggedIn, isInstructor, updateCourseContent);
+// router.post("/delete", isLoggedIn, isInstructor, deleteCourseContent);
+router.post("/create", createCourseContent);
+router.post("/update", updateCourseContent);
+router.post("/delete", deleteCourseContent);
 
 module.exports = router;
