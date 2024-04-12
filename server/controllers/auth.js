@@ -8,7 +8,7 @@ exports.signup = async (req, res) => {
             firstName,
             lastName,
             email,
-            username,
+            // username,
             password,
             confirmPassword,
             accountType,
@@ -21,7 +21,7 @@ exports.signup = async (req, res) => {
             !firstName ||
             !lastName ||
             !email ||
-            !username ||
+            // !username ||
             !password ||
             !confirmPassword
             // !otp
@@ -66,15 +66,21 @@ exports.signup = async (req, res) => {
         //     });
         // }
 
+
+        const allUsers = await User.findByUsername();
+        console.log("allUsers", allUsers);
+
+        // const username = firstName+lastName;
+        // console.log("username", username);
         const user = await User.create({
             firstName,
             lastName,
             email,
-            username,
+            // username,
             // contactNumber,
             // password: hashedPassword,
             accountType: accountType,
-            image: `https://api.dicebear.com/8.x/pixel-art/svg?seed=${username}`,
+            image: `https://api.dicebear.com/8.x/pixel-art/svg?seed=${email}`,
         });
         const registeredUser = await User.register(user, password);
 
@@ -89,6 +95,7 @@ exports.signup = async (req, res) => {
         return res.status(500).json({
             success: false,
             message: "User cannot be registered. Please try again.",
+            error: err.message,
         });
     }
 };
@@ -124,6 +131,7 @@ exports.login = async (req, res) => {
         return res.status(500).json({
             success: false,
             message: `Login Failure Please Try Again`,
+            error: err.message,
         });
     }
 };
