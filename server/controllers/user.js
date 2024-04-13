@@ -12,9 +12,15 @@ exports.updateUser = async (req, res) => {
         const {
             firstName = "",
             lastName = "",
+            username, 
+            userId
         } = req.body;
-        const userId = req.user.id;
-        const displayPicture = req.files.displayPicture
+        // const userId = req.user.id;
+        // const user = await User.find({
+        //     username : username
+        // });
+        // const userId = user._id;
+        // const displayPicture = req.files.displayPicture
 
         // Find and update user by id
         const updatedUser = await User.findByIdAndUpdate(userId, {
@@ -59,7 +65,15 @@ exports.updateUser = async (req, res) => {
 // DELETE
 exports.deleteUser = async (req, res) => {
     try {
-        const id = req.user.id
+        // const id = req.user.id
+        const {
+            username,
+            userId
+        } = req.body;
+        // const userReq = await User.find({
+        //     username : username
+        // });
+        const id = userId;
 
         const user = await User.findById({ _id: id });
         // Return error if user not found
@@ -98,7 +112,15 @@ exports.deleteUser = async (req, res) => {
 // READ User details
 exports.userDetails = async (req, res) => {
     try {
-        const userId = req.user.id
+        // const userId = req.user.id
+        const {
+            username,
+            userId
+        } = req.body;
+        // const user = await User.find({
+        //     username : username
+        // });
+        // const userId = user._id;
         const userDetails = await User.findById(userId)
             .populate("firstName")
             .populate("lastName")
@@ -123,7 +145,15 @@ exports.userDetails = async (req, res) => {
 // READ Enrolled courses
 exports.enrolledCourses = async (req, res) => {
     try {
-        const userId = req.user.id;
+        // const userId = req.user.id;
+        const {
+            username, 
+            userId
+        } = req.body;
+        // const user = await User.find({
+        //     username : username
+        // });
+        // const userId = user._id;
 
         let userDetails = await User.findOne({
             _id: userId,
@@ -193,7 +223,16 @@ exports.enrolledCourses = async (req, res) => {
 // READ Course stats
 exports.instructorDashboard = async (req, res) => {
     try {
-        const courseDetails = await Course.find({ instructor: req.user.id })
+        const {
+            username,
+            userId
+        } = req.body;
+        // const user = await User.find({
+        //     username : username
+        // });
+        // const userId = user._id;
+        // const courseDetails = await Course.find({ instructor: req.user.id })
+        const courseDetails = await Course.find({ instructor: userId })
 
         const courseData = courseDetails.map((course) => {
             const totalStudentsEnrolled = course.studentsEnrolled.length

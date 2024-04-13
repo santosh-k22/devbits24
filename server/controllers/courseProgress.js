@@ -5,8 +5,12 @@ const CourseSubContent = require("../models/courseSubContent");
 const CourseProgress = require("../models/courseProgress");
 
 exports.updateCourseProgress = async (req, res) => {
-    const { courseId, courseSubContentId } = req.body;
-    const userId = req.user.id;
+    const { courseId, courseSubContentId, username, userId } = req.body;
+    // const userId = req.user.id;
+    // const user = await User.find({
+    //     username : username
+    // });
+    // const userId = user._id;
 
     try {
         // TODO

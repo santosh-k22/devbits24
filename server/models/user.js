@@ -20,6 +20,10 @@ const UserSchema = new Schema(
             required: true,
             trim: true,
         },
+        username: {
+            type: String,
+            required: true,
+        },
         // password: {
         //     type: String,
         //     required: true,
@@ -53,6 +57,6 @@ const UserSchema = new Schema(
     },
     { timestamps: true }
 );
-UserSchema.plugin(passportLocalMongoose);
+// UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model("User", UserSchema);

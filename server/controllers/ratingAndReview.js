@@ -1,19 +1,31 @@
 const RatingAndReview = require("../models/ratingAndReview");
 const Course = require("../models/course");
+const CourseProgress = require("../models/courseProgress");
 // const { mongo, default: mongoose } = require("mongoose");
 
 // CREATE Rating
 exports.createRating = async (req, res) => {
     try {
-        const userId = req.user.id;
-        const { rating, review, courseId } = req.body;
+        // const userId = req.user.id;
+
+        const { rating, review, courseId, username, userId } = req.body;
+        // const user = await User.find({
+        //     username : username
+        // });
+        // const userId = user._id;
 
         // Check if user is enrolled or not
         const courseDetails = await Course.findOne({
             _id: courseId,
             studentsEnrolled: { $elemMatch: { $eq: userId } },
         });
-        if (!courseDetails) {
+        let courseProgress = await CourseProgress.findOne({
+            courseID: courseId,
+            userId: userId,
+        })   
+        console.log("courseProgress", courseProgress);
+
+        if (!courseDetails && !courseProgress) {
             return res.status(404).json({
                 success: false,
                 message: "Student is not enrolled in the course",
@@ -140,15 +152,26 @@ exports.getAllRating = async (req, res) => {
 // UPDATE 
 exports.updateRating = async (req, res) => {
 	try {
-        const userId = req.user.id;
-        const { rating, review, ratingId } = req.body;
+        // const userId = req.user.id;
+        const { rating, review, ratingId, username, userId, courseId } = req.body;
+        // const user = await User.find({
+        //     username : username
+        // });
+        // const userId = user._id;
 
         // Check if user is enrolled or not
         const courseDetails = await Course.findOne({
             _id: ratingId,
             studentsEnrolled: { $elemMatch: { $eq: userId } },
         });
-        if (!courseDetails) {
+        console.log("courseDetails", courseDetails);
+        let courseProgress = await CourseProgress.findOne({
+            courseID: courseId,
+            // courseID: courseDetails._id,
+            userId: userId,
+        })   
+        console.log("courseProgress", courseProgress);
+        if (!courseDetails && !courseProgress) {
             return res.status(404).json({
                 success: false,
                 message: "Student is not enrolled in the course",

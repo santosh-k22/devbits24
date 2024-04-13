@@ -8,9 +8,9 @@ const logger = require('morgan');
 const path = require("path");
 
 const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
-const User = require("./models/user");
+// const passport = require("passport");
+// const LocalStrategy = require("passport-local");
+// const User = require("./models/user");
 const helmet = require("helmet");
 
 app.use(express.json());
@@ -27,7 +27,7 @@ const courseSubContentRoutes = require("./routes/courseSubContent");
 const ratingAndReviewRoutes = require("./routes/ratingAndReview");
 
 const dev_db_url =
-    "mongodb+srv://kothapallisantoshece22:<password>@cluster0.iyzydsp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+    "mongodb+srv://kothapallisantoshece22:6zPFY03uyofZn3oV@cluster0.iyzydsp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 // Wait for database to connect, logging an error if there is a problem
 main().catch((err) => console.log(err));
@@ -49,11 +49,11 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// app.use(passport.initialize());
+// app.use(passport.session());
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 // app.use(helmet({ contentSecurityPolicy: false }));
 
 // app.use(csrf());

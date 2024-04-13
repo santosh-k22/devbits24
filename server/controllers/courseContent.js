@@ -28,12 +28,12 @@ exports.createCourseContent = async (req, res) => {
 			},
 			{ new: true }
 		)
-			.populate({
-				path: "courseContent",
-				populate: {
-					path: "courseSubContent",
-				},
-			})
+			// .populate({
+			// 	path: "courseContent",
+			// 	populate: {
+			// 		path: "courseSubContent",
+			// 	},
+			// })
 			.exec();
 
 		// Return the updated course object in the response
@@ -74,12 +74,12 @@ exports.updateCourseContent = async (req, res) => {
 
         // find updated course
 		const course = await Course.findById(courseId)
-		.populate({
-			path:"courseContent",
-			populate:{
-				path:"courseSubContent",
-			},
-		})
+		// .populate({
+		// 	path:"courseContent",
+		// 	populate:{
+		// 		path:"courseSubContent",
+		// 	},
+		// })
 		.exec();
 
 		res.status(200).json({
@@ -126,12 +126,13 @@ exports.deleteCourseContent = async (req, res) => {
 		await CourseContent.findByIdAndDelete(courseContentId);
 
 		//find the updated course and return 
-		const course = await Course.findById(courseId).populate({
-			path:"courseContent",
-			populate: {
-				path: "courseSubContent"
-			}
-		})
+		const course = await Course.findById(courseId)
+		// .populate({
+		// 	path:"courseContent",
+		// 	populate: {
+		// 		path: "courseSubContent"
+		// 	}
+		// })
 		.exec();
 
 		res.status(200).json({

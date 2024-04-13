@@ -20,6 +20,7 @@ import Footer from './components/Footer';
 // import getLPTheme from './getLPTheme';
 import axios from "axios";
 import { useEffect } from "react";
+import { useUser } from "@clerk/clerk-react";
 
 
 // function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
@@ -83,15 +84,60 @@ export default function LandingPage() {
       const res = await axios.get(
         "http://localhost:3000/course/",
       );
-      console.log(res.data);
+      console.log("trialFunc", res.data);
     } catch (err) {
       console.error(err);
     }
   };
   useEffect(() => {
-    console.log("team_details")
+    // console.log("team_details")
     trialFunc();
+    registerUser();
   }, []);
+
+
+  const { isSignedIn, isLoaded, user } = useUser();
+  const registerUser = async () => {
+    if (!isSignedIn) {
+      return null;
+    }
+    // if (!isLoaded) {
+    //   return null;
+    // }
+
+    console.log("user", user);
+
+    const data = {
+      "firstName": user.firstName,
+      "lastName": user.lastName, 
+      "email": user.primaryEmailAddress.emailAddress,
+      "username": user.username,
+    }
+    // const data = {
+    //   "courseName": "first course by me on frontend",
+    //   "courseDescription": "created to test Create Category",
+    //   "whatYouWillLearn": "thinking about it...",
+    //   "price": 1000,
+    //   "username": user.username,
+    //   "tag": "second category",
+    //   "category": "6610278310687282f7a4f266",
+    //   "instructions": "Testing is important",
+    // }
+    console.log("data", data)
+
+    try {
+      const query = await axios.post("http://localhost:3000/auth/signup", data)
+      // const query = await axios.post("http://localhost:3000/course/create", data)
+      console.log("QData", query.data);
+      // await user.reload();
+    } catch (err) {
+      console.error(err);
+    }
+    // If the update was successful, reload the user data
+  };
+
+  // registerUser();
+
 
   return (
     // <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
@@ -103,7 +149,7 @@ export default function LandingPage() {
         <LogoCollection />
         <Features />
         <Divider />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Divider />
         <Highlights />
         <Divider />

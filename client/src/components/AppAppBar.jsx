@@ -13,6 +13,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import ToggleColorMode from './ToggleColorMode';
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+
 
 const logoStyle = {
   width: '140px',
@@ -140,27 +142,32 @@ function AppAppBar({ mode, toggleColorMode }) {
               }}
             >
               <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-              <Button
-                color="primary"
-                variant="text"
-                size="small"
-                component="a"
-                href="/SignIn"
-                target="_blank"
-              >
-                <Link to="/signIn">Sign in</Link> 
-              </Button>
-              <Button
-                color="primary"
-                // variant="contained"
-                variant="text"
-                size="small"
-                component="a"
-                href="SignUp"
-                target="_blank"
-              >
-                <Link to="/signUp">Sign up</Link> 
-              </Button>
+              <SignedOut>
+                <Button
+                  color="primary"
+                  variant="text"
+                  size="small"
+                  component="a"
+                  href="/SignIn"
+                  target="_blank"
+                >
+                  <Link to="/signIn">Sign in</Link> 
+                </Button>
+                <Button
+                  color="primary"
+                  // variant="contained"
+                  variant="text"
+                  size="small"
+                  component="a"
+                  href="SignUp"
+                  target="_blank"
+                >
+                  <Link to="/signUp">Sign up</Link> 
+                </Button>
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
               <Button

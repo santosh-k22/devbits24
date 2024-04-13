@@ -8,9 +8,9 @@ exports.signup = async (req, res) => {
             firstName,
             lastName,
             email,
-            // username,
-            password,
-            confirmPassword,
+            username,
+            // password,
+            // confirmPassword,
             accountType,
             // contactNumber,
             // otp,
@@ -21,9 +21,9 @@ exports.signup = async (req, res) => {
             !firstName ||
             !lastName ||
             !email ||
-            // !username ||
-            !password ||
-            !confirmPassword
+            !username
+            // !password
+            // !confirmPassword
             // !otp
         ) {
             return res.status(403).send({
@@ -32,13 +32,13 @@ exports.signup = async (req, res) => {
             });
         }
         // Check if password and confirm password match
-        if (password !== confirmPassword) {
-            return res.status(400).json({
-                success: false,
-                message:
-                    "Password and Confirm Password do not match. Please try again.",
-            });
-        }
+        // if (password !== confirmPassword) {
+        //     return res.status(400).json({
+        //         success: false,
+        //         message:
+        //             "Password and Confirm Password do not match. Please try again.",
+        //     });
+        // }
 
         // Check if user already exists
         const existingUser = await User.findOne({ email });
@@ -67,8 +67,8 @@ exports.signup = async (req, res) => {
         // }
 
 
-        const allUsers = await User.findByUsername();
-        console.log("allUsers", allUsers);
+        // const allUsers = await User.findByUsername();
+        // console.log("allUsers", allUsers);
 
         // const username = firstName+lastName;
         // console.log("username", username);
@@ -76,13 +76,13 @@ exports.signup = async (req, res) => {
             firstName,
             lastName,
             email,
-            // username,
+            username,
             // contactNumber,
             // password: hashedPassword,
-            accountType: accountType,
+            // accountType: accountType,
             image: `https://api.dicebear.com/8.x/pixel-art/svg?seed=${email}`,
-        });
-        const registeredUser = await User.register(user, password);
+        }).exec();
+        // const registeredUser = await User.register(user, password);
 
         return res.status(200).json({
             success: true,
@@ -200,5 +200,22 @@ exports.logout = async (req, res) => {
             message: "Error occurred while logging out user",
             error: err.message,
         });
+    }
+};
+
+
+exports.allUsers = async (req, res) => {
+    try {
+        const users = await User.find({});
+        return res.status(200).json({ success: true, message: "Users fetched successfully", users });
+    } catch (err) {
+        // If there's an error fetching the users, log the error and return a 500 (Internal Server Error) error
+        // console.error("Error occurred while fetching users:", err);
+        return res.status(500).json({
+            success: false,
+            message: "Error occurred while fetching users",
+            error: err.message,
+        });
+        return res.status(200).json({ success: true, message: "User logged out successfully" });
     }
 };
